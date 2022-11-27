@@ -112,43 +112,50 @@
 			visibility: visible;
 		}
 	</style>
-<!-- Yandex Games SDK -->
-<script src="https://yandex.ru/games/sdk/v2"></script>
+<!-- VK SDK -->
+<script src="https://unpkg.com/@vkontakte/vk-bridge/dist/browser.min.js"></script>
 <script>
-YaGames.init({
-	adv: {
-		onAdvClose: wasShown => {
-			console.info('adv closed!');
-		}
-	}
-}).then(ysdk => {
-	ysdk.adv.showFullscreenAdv();
-	window.ysdk = ysdk;
-});
+vkBridge.send("VKWebAppInit", {});
+
+function CheckAd() {
+	// Проверка готовности рекламы
+	bridge.send('VKWebAppCheckNativeAds', { ad_format: 'interstitial'});
+}
 
 function ShowAd() {
-	window.ysdk.adv.showFullscreenAdv();
+	bridge.send('VKWebAppShowNativeAds', { ad_format: 'interstitial' })
+		.then((data) => {
+			if (data.result)
+				console.log('Реклама показана');
+			else
+			console.log('Ошибка при показе');
+		}
+	).catch((error) => { console.log(error); /* Ошибка */ });
+}
+
+function CheckRewardedAd(callback) {
+	// Проверка готовности рекламы
+	bridge.send('VKWebAppCheckNativeAds', { ad_format: 'reward' })
+		.then((data) => {
+			if (data.result) {
+				callback(True);
+			} else {
+				callback(False);
+				console.log('Рекламные материалы не найдены.');
+			}
+		}
+	).catch((error) => { console.log(error);  });
 }
 
 function ShowAdRewardedVideo(callback) {
-	window.ysdk.adv.showRewardedVideo({
-		callbacks: {
-			onOpen: () => {
-				console.log('Video ad open.');
-			},
-			onRewarded: () => {
-				isRewarded = true;
-				callback(isRewarded);
-				console.log('Reward!');
-			},
-			onClose: () => {
-				console.log('Video ad closed.');
-			},
-			onError: (e) => {
-				console.log('Error while open video ad:', e);
-			}
+	bridge.send('VKWebAppShowNativeAds', { ad_format: 'reward' })
+		.then((data) => {
+			if (data.result)
+				callback(True);
+				console.log('Реклама показана');
+			else console.log('Ошибка при показе');
 		}
-	});
+	).catch((error) => { console.log(error); /* Ошибка */ });
 }
 </script>
 </head>
@@ -175,7 +182,7 @@ function ShowAdRewardedVideo(callback) {
 	<script type='text/javascript' src='index.js'></script>
 	<script type='text/javascript'>//<![CDATA[
 
-		const GODOT_CONFIG = {"args":[],"canvasResizePolicy":2,"executable":"index","experimentalVK":false,"fileSizes":{"index.pck":13563568,"index.wasm":13789463},"focusCanvas":true,"gdnativeLibs":[]};
+		const GODOT_CONFIG = {"args":[],"canvasResizePolicy":2,"executable":"index","experimentalVK":false,"fileSizes":{"index.pck":13564880,"index.wasm":13789463},"focusCanvas":true,"gdnativeLibs":[]};
 		var engine = new Engine(GODOT_CONFIG);
 
 		(function() {
