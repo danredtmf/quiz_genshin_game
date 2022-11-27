@@ -139,9 +139,9 @@ function CheckRewardedAd(callback) {
 	bridge.send('VKWebAppCheckNativeAds', { ad_format: 'reward' })
 		.then((data) => {
 			if (data.result) {
-				callback(True);
+				callback(data);
 			} else {
-				callback(False);
+				callback(data);
 				console.log('Рекламные материалы не найдены.');
 			}
 		}
