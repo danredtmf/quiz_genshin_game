@@ -140,10 +140,10 @@ function CheckRewardedAd(callback) {
 		.then((data) => {
 			if (data.result) {
 				console.log('Есть реклама');
-				callback(True);
+				callback(true);
 			} else {
 				console.log('Рекламные материалы не найдены.');
-				callback(False);
+				callback(false);
 			}
 		}
 	).catch((error) => { console.log(error); });
@@ -154,10 +154,10 @@ function ShowAdRewardedVideo(callback) {
 		.then((data) => {
 			if (data.result) {
 				console.log('Реклама показана');
-				callback(True);
+				callback(true);
 			} else {
 				console.log('Ошибка при показе');
-				callback(False);
+				callback(false);
 			}
 		}
 	).catch((error) => { console.log(error); });
@@ -187,7 +187,7 @@ function ShowAdRewardedVideo(callback) {
 	<script type='text/javascript' src='index.js'></script>
 	<script type='text/javascript'>//<![CDATA[
 
-		const GODOT_CONFIG = {"args":[],"canvasResizePolicy":2,"executable":"index","experimentalVK":false,"fileSizes":{"index.pck":13564752,"index.wasm":13789463},"focusCanvas":true,"gdnativeLibs":[]};
+		const GODOT_CONFIG = {"args":[],"canvasResizePolicy":2,"executable":"index","experimentalVK":false,"fileSizes":{"index.pck":13564800,"index.wasm":13789463},"focusCanvas":true,"gdnativeLibs":[]};
 		var engine = new Engine(GODOT_CONFIG);
 
 		(function() {
