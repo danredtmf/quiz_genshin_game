@@ -134,28 +134,30 @@ function ShowAd() {
 	).catch((error) => { console.log(error); });
 }
 
-// Проверка готовности рекламы
-bridge.send('VKWebAppCheckNativeAds', { ad_format: 'reward' })
-	.then((data) => {
-		if (data.result) {
-			console.log('Есть реклама');
-		} else {
-			console.log('Рекламные материалы не найдены.');
+function CheckRewardedAd() {
+	// Проверка готовности рекламы
+	bridge.send('VKWebAppCheckNativeAds', { ad_format: 'reward' })
+		.then((data) => {
+			if (data.result) {
+				console.log('Есть реклама');
+				return True;
+			} else {
+				console.log('Рекламные материалы не найдены.');
+				return False;
+			}
 		}
-	}
-).catch((error) => { console.log(error);  });
+	).catch((error) => { console.log(error); });
+}
 
-// function CheckRewardedAd(callback) {}
-
-function ShowAdRewardedVideo(callback) {
+function ShowAdRewardedVideo() {
 	bridge.send('VKWebAppShowNativeAds', { ad_format: 'reward' })
 		.then((data) => {
 			if (data.result) {
-				callback(True);
 				console.log('Реклама показана');
-			} else { 
-				callback(False);
+				return True;
+			} else {
 				console.log('Ошибка при показе');
+				return False;
 			}
 		}
 	).catch((error) => { console.log(error); });
