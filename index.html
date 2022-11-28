@@ -139,10 +139,8 @@ function CheckRewardedAd(callback) {
 	vkBridge.send('VKWebAppCheckNativeAds', { ad_format: 'reward' })
 		.then((data) => {
 			if (data.result) {
-				console.log('Есть реклама');
 				callback(true);
 			} else {
-				console.log('Рекламные материалы не найдены.');
 				callback(false);
 			}
 		}
@@ -153,10 +151,8 @@ function ShowAdRewardedVideo(callback) {
 	vkBridge.send('VKWebAppShowNativeAds', { ad_format: 'reward' })
 		.then((data) => {
 			if (data.result) {
-				console.log('Реклама показана');
 				callback(true);
 			} else {
-				console.log('Ошибка при показе');
 				callback(false);
 			}
 		}
@@ -187,7 +183,7 @@ function ShowAdRewardedVideo(callback) {
 	<script type='text/javascript' src='index.js'></script>
 	<script type='text/javascript'>//<![CDATA[
 
-		const GODOT_CONFIG = {"args":[],"canvasResizePolicy":2,"executable":"index","experimentalVK":false,"fileSizes":{"index.pck":13564848,"index.wasm":13789463},"focusCanvas":true,"gdnativeLibs":[]};
+		const GODOT_CONFIG = {"args":[],"canvasResizePolicy":2,"executable":"index","experimentalVK":false,"fileSizes":{"index.pck":13565120,"index.wasm":13789463},"focusCanvas":true,"gdnativeLibs":[]};
 		var engine = new Engine(GODOT_CONFIG);
 
 		(function() {
