@@ -134,30 +134,30 @@ function ShowAd() {
 	).catch((error) => { console.log(error); });
 }
 
-function CheckRewardedAd() {
+function CheckRewardedAd(callback) {
 	// Проверка готовности рекламы
 	vkBridge.send('VKWebAppCheckNativeAds', { ad_format: 'reward' })
 		.then((data) => {
 			if (data.result) {
 				console.log('Есть реклама');
-				return True;
+				callback(True);
 			} else {
 				console.log('Рекламные материалы не найдены.');
-				return False;
+				callback(False);
 			}
 		}
 	).catch((error) => { console.log(error); });
 }
 
-function ShowAdRewardedVideo() {
+function ShowAdRewardedVideo(callback) {
 	vkBridge.send('VKWebAppShowNativeAds', { ad_format: 'reward' })
 		.then((data) => {
 			if (data.result) {
 				console.log('Реклама показана');
-				return True;
+				callback(True);
 			} else {
 				console.log('Ошибка при показе');
-				return False;
+				callback(False);
 			}
 		}
 	).catch((error) => { console.log(error); });
@@ -187,7 +187,7 @@ function ShowAdRewardedVideo() {
 	<script type='text/javascript' src='index.js'></script>
 	<script type='text/javascript'>//<![CDATA[
 
-		const GODOT_CONFIG = {"args":[],"canvasResizePolicy":2,"executable":"index","experimentalVK":false,"fileSizes":{"index.pck":13564960,"index.wasm":13789463},"focusCanvas":true,"gdnativeLibs":[]};
+		const GODOT_CONFIG = {"args":[],"canvasResizePolicy":2,"executable":"index","experimentalVK":false,"fileSizes":{"index.pck":13564976,"index.wasm":13789463},"focusCanvas":true,"gdnativeLibs":[]};
 		var engine = new Engine(GODOT_CONFIG);
 
 		(function() {
