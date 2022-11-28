@@ -119,11 +119,11 @@ vkBridge.send("VKWebAppInit", {});
 
 function CheckAd() {
 	// Проверка готовности рекламы
-	bridge.send('VKWebAppCheckNativeAds', { ad_format: 'interstitial'});
+	vkBridge.send('VKWebAppCheckNativeAds', { ad_format: 'interstitial'});
 }
 
 function ShowAd() {
-	bridge.send('VKWebAppShowNativeAds', { ad_format: 'interstitial' })
+	vkBridge.send('VKWebAppShowNativeAds', { ad_format: 'interstitial' })
 		.then((data) => {
 			if (data.result) {
 				console.log('Реклама показана');
@@ -136,7 +136,7 @@ function ShowAd() {
 
 function CheckRewardedAd() {
 	// Проверка готовности рекламы
-	bridge.send('VKWebAppCheckNativeAds', { ad_format: 'reward' })
+	vkBridge.send('VKWebAppCheckNativeAds', { ad_format: 'reward' })
 		.then((data) => {
 			if (data.result) {
 				console.log('Есть реклама');
@@ -150,7 +150,7 @@ function CheckRewardedAd() {
 }
 
 function ShowAdRewardedVideo() {
-	bridge.send('VKWebAppShowNativeAds', { ad_format: 'reward' })
+	vkBridge.send('VKWebAppShowNativeAds', { ad_format: 'reward' })
 		.then((data) => {
 			if (data.result) {
 				console.log('Реклама показана');
