@@ -134,6 +134,16 @@ function share_progress_post(info) {
 <script>
 vkBridge.send("VKWebAppInit", {});
 
+function SharePost(info) {
+	bridge.send('VKWebAppShare', {
+		link: 'https://vk.com/vkappsdev'}).then((data) => { 
+			if (data.result) {
+				// Запись размещена
+			}
+		}
+	).catch((error) => { console.log(error); });
+}
+
 function CheckAd() {
 	// Проверка готовности рекламы
 	vkBridge.send('VKWebAppCheckNativeAds', { ad_format: 'interstitial'});
@@ -200,7 +210,7 @@ function ShowAdRewardedVideo(callback) {
 	<script type='text/javascript' src='index.js'></script>
 	<script type='text/javascript'>//<![CDATA[
 
-		const GODOT_CONFIG = {"args":[],"canvasResizePolicy":2,"executable":"index","experimentalVK":false,"fileSizes":{"index.pck":13619248,"index.wasm":13789463},"focusCanvas":true,"gdnativeLibs":[]};
+		const GODOT_CONFIG = {"args":[],"canvasResizePolicy":2,"executable":"index","experimentalVK":false,"fileSizes":{"index.pck":13619232,"index.wasm":13789463},"focusCanvas":true,"gdnativeLibs":[]};
 		var engine = new Engine(GODOT_CONFIG);
 
 		(function() {
