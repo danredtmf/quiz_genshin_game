@@ -116,14 +116,14 @@
 <script src="https://vk.com/js/api/xd_connection.js?2"  type="text/javascript"></script>
 <script type="text/javascript">
 VK.init(function() {
-	init();
+	//init();
 }, function() {
 	// Если ошибка
 }, '5.131');
 
-function init() {
-	VK.callMethod("showSettingsBox", 8450);
-}
+//function init() {
+//	VK.callMethod("showSettingsBox", 8450);
+//}
 
 function share_progress_post(info) {
 	VK.api("wall.post", {"message":info, "attachment":"photo-217452821_457239023,https://vk.com/app51469490", "v":"5.73"}, function (data) {});
