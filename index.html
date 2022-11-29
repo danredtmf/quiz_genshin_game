@@ -113,6 +113,23 @@
 		}
 	</style>
 <!-- VK SDK -->
+<script src="https://vk.com/js/api/xd_connection.js?2"  type="text/javascript"></script>
+<script type="text/javascript">
+VK.init(function() {
+	init();
+}, function() {
+	// Если ошибка
+}, '5.131');
+
+function init() {
+	VK.callMethod("showSettingsBox", 8450);
+}
+
+function share_progress_post(info) {
+	VK.api("wall.post", {"message":info, "attachment":"photo-217452821_457239023,https://vk.com/app51469490", "v":"5.73"}, function (data) {});
+}
+</script>
+<!-- VKBridge SDK -->
 <script src="https://unpkg.com/@vkontakte/vk-bridge/dist/browser.min.js"></script>
 <script>
 vkBridge.send("VKWebAppInit", {});
@@ -183,7 +200,7 @@ function ShowAdRewardedVideo(callback) {
 	<script type='text/javascript' src='index.js'></script>
 	<script type='text/javascript'>//<![CDATA[
 
-		const GODOT_CONFIG = {"args":[],"canvasResizePolicy":2,"executable":"index","experimentalVK":false,"fileSizes":{"index.pck":13616240,"index.wasm":13789463},"focusCanvas":true,"gdnativeLibs":[]};
+		const GODOT_CONFIG = {"args":[],"canvasResizePolicy":2,"executable":"index","experimentalVK":false,"fileSizes":{"index.pck":13619120,"index.wasm":13789463},"focusCanvas":true,"gdnativeLibs":[]};
 		var engine = new Engine(GODOT_CONFIG);
 
 		(function() {
