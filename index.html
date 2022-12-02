@@ -117,8 +117,21 @@
 <script>
 vkBridge.send("VKWebAppInit", {});
 
+function AddToFavorites(callback) {
+	vkBridge.send('VKWebAppAddToFavorites').then((data) => { 
+		if (data.result) {
+			callback(true);
+		} else {
+			callback(false);
+		}
+	}).catch((error) => { console.log(error); });
+}
+
 function SharePost(info, callback) {
-	vkBridge.send('VKWebAppShowWallPostBox', { message: info, attachments: 'photo-217452821_457239023,https://vk.com/app51469490' }).then((data) => { 
+	vkBridge.send('VKWebAppShowWallPostBox', { 
+		message: info,
+		attachments: 'photo-217452821_457239023,https://vk.com/app51469490'
+	}).then((data) => { 
 		if (data.post_id) {
 			callback(true);
 		}
@@ -131,15 +144,13 @@ function CheckAd() {
 }
 
 function ShowAd() {
-	vkBridge.send('VKWebAppShowNativeAds', { ad_format: 'interstitial' })
-		.then((data) => {
-			if (data.result) {
-				console.log('Реклама показана');
-			} else {
-				console.log('Ошибка при показе');
-			}
+	vkBridge.send('VKWebAppShowNativeAds', { ad_format: 'interstitial' }).then((data) => {
+		if (data.result) {
+			callback(true);
+		} else {
+			callback(false);
 		}
-	).catch((error) => { console.log(error); });
+	}).catch((error) => { console.log(error); });
 }
 
 function CheckRewardedAd(callback) {
@@ -191,7 +202,7 @@ function ShowAdRewardedVideo(callback) {
 	<script type='text/javascript' src='index.js'></script>
 	<script type='text/javascript'>//<![CDATA[
 
-		const GODOT_CONFIG = {"args":[],"canvasResizePolicy":2,"executable":"index","experimentalVK":false,"fileSizes":{"index.pck":13619520,"index.wasm":13789463},"focusCanvas":true,"gdnativeLibs":[]};
+		const GODOT_CONFIG = {"args":[],"canvasResizePolicy":2,"executable":"index","experimentalVK":false,"fileSizes":{"index.pck":13629808,"index.wasm":13789463},"focusCanvas":true,"gdnativeLibs":[]};
 		var engine = new Engine(GODOT_CONFIG);
 
 		(function() {
