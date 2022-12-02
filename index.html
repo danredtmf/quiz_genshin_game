@@ -134,8 +134,21 @@ function SharePost(info, callback) {
 	}).then((data) => { 
 		if (data.post_id) {
 			callback(true);
+		} else {
+			callback(false);
 		}
 	}).catch((error) => { console.log(error); });
+}
+
+function IvniteFriends(callback) {
+	vkBridge.send('VKWebAppShowInviteBox', {})
+		.then((data) => { 
+			if (data.success) {
+				callback(true);
+			} else {
+				callback(false);
+			}
+		}).catch((error) => { console.log(error); });
 }
 
 function CheckAd() {
@@ -202,7 +215,7 @@ function ShowAdRewardedVideo(callback) {
 	<script type='text/javascript' src='index.js'></script>
 	<script type='text/javascript'>//<![CDATA[
 
-		const GODOT_CONFIG = {"args":[],"canvasResizePolicy":2,"executable":"index","experimentalVK":false,"fileSizes":{"index.pck":13630528,"index.wasm":13789463},"focusCanvas":true,"gdnativeLibs":[]};
+		const GODOT_CONFIG = {"args":[],"canvasResizePolicy":2,"executable":"index","experimentalVK":false,"fileSizes":{"index.pck":13633920,"index.wasm":13789463},"focusCanvas":true,"gdnativeLibs":[]};
 		var engine = new Engine(GODOT_CONFIG);
 
 		(function() {
