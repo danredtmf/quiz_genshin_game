@@ -156,7 +156,7 @@ function CheckAd() {
 	vkBridge.send('VKWebAppCheckNativeAds', { ad_format: 'interstitial'});
 }
 
-function ShowAd() {
+function ShowAd(callback) {
 	vkBridge.send('VKWebAppShowNativeAds', { ad_format: 'interstitial' }).then((data) => {
 		if (data.result) {
 			callback(true);
@@ -215,7 +215,7 @@ function ShowAdRewardedVideo(callback) {
 	<script type='text/javascript' src='index.js'></script>
 	<script type='text/javascript'>//<![CDATA[
 
-		const GODOT_CONFIG = {"args":[],"canvasResizePolicy":2,"executable":"index","experimentalVK":false,"fileSizes":{"index.pck":13650384,"index.wasm":13789463},"focusCanvas":true,"gdnativeLibs":[]};
+		const GODOT_CONFIG = {"args":[],"canvasResizePolicy":2,"executable":"index","experimentalVK":false,"fileSizes":{"index.pck":13732944,"index.wasm":13789463},"focusCanvas":true,"gdnativeLibs":[]};
 		var engine = new Engine(GODOT_CONFIG);
 
 		(function() {
